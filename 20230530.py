@@ -15,12 +15,12 @@ second_num = num_list[1]
 sum=0
 while True:
     for i in range(K):
-            if M!= 0:
+        if M!= 0:
                 sum+=first_num      
                 M-=1
-            else: 
-                break               
-            print(sum)
+        else: 
+            break               
+        print(sum)
                             # 이 부분의 반복문은 가장 큰 수가 반복되는 부분.
                             # 만약 K=4라면,,,
                             # i = 0
