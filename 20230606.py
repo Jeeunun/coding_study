@@ -10,41 +10,66 @@
 
 
 # 2. 예시로 파악하기
-n = int(input("행의 수: "))
-m = int(input("열의 수: "))
-
-list_n =[[3,1,2],[4,1,4],[2,2,2]]
-for a in range(0,n):
-    a.sort()
-print(list_n)
+#  - 안에 있는 각각의 리스트를 정렬 시키자. 
+n = 3
+m =3
+lista=[[3,1,2],[4,1,4],[2,2,2]]
+for a in range(0,3): #a= list_n[0],list_n[1],list_n[2] #for a in range(0,n)
+    lista[a].sort()
+print(lista)
     # 결과 :[[1, 2, 3],[1, 4, 4],[2, 2, 2]]
 
 
-# 사용자가 행(n)을 선택 = > list[n+1]
-choose_n = int(input("몇 번째 행을 선택하시겠습니까?: "))
-for b in range(0,m):
-    b.sort()
+# - 사용자가 행(n)을 선택 = > lista[n-1] 의 값을 선택하는 것
+#  가장 작은 수 선택하기 => 인덱스 활용
+# choose_n = int(input("몇 번째 행을 선택하시겠습니까?: ")) 
+# print(lista[m-1][0])
 
-# 가장 큰 수 선택하기 = 인덱스 활용
-answer = list_n[n-1][-1]
-print(answer)
-#     # 결과 : 2
+# - 최종적으로 가장 높은 숫자의 카드를 뽑을 수 있도록 하기
+# 빈리스트를 만들어서 각각의 리스트 안에 있는 가장 작은 수를 append시킨다.
+# 조건문 if ~ else를 사용해서 새로만든 리스트의 가장 큰 수와 앞서 선택한 가장 작은 수를 비교
+#  
 
-다시 풀어보기~
 # 3. 프로그램 구현
-row_num = int('m')
-line_num = int('n')
+# 1) M=3, N=3, choose_n = 2인경우
+m = 3
+n = 3
+choose_n = 2
+listb = []
 
-N_line = [] #n개의 행 리스트
-for a in n:
-    a.sort()
+lista=[[3,1,2],[4,1,4],[2,2,2]]
+for a in range(0,3):
+    lista[a].sort()
 
-N_line2 = []
-for a in n:
-    b = N_line[a][0]
-    N_line2.append(b)
-print(list_n2[-1])
+for b in range(len(lista)):
+    listb.append(lista[a][0])
 
+if listb[-1] >= lista[choose_n-1][0]:
+    print(listb[-1])
+else:
+    print(lista[n-1][0])
 
-# ---------------------------------------------
-# <1이 될 때까지>
+# 결과 : 2
+
+# # 2) M=2, N=4 choose_n = 1
+m = 2
+n = 4
+choose_n = 1
+listb = []
+
+lista = [[7,3,1,8],[3,3,3,4]]
+for a in range(0,2):
+    lista[a].sort()
+
+for b in range(len(lista)):
+    listb.append(lista[a][0])
+
+if listb[-1] >= lista[choose_n-1][0]:
+    print(listb[-1])
+else:
+    print(lista[n-1][0])
+
+#결과 3
+
+# # ---------------------------------------------
+# # <1이 될 때까지>
