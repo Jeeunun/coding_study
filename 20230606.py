@@ -5,29 +5,35 @@
 #  m개의 열을 리스트화 => [[첫번째 열의 값들],[두번째 열의 값들],[세번째 열의 값들],,,,[N번째 열의 값들]] => n개가 있는 것
 #  [[],[],[],,,[]] => 즉, 각각의 리스트 안에는 M개의 수가 있고 / 리스트는 N개의 리스트가 있는 것.
 # 1) 각각의 리스트를 정렬하기
-# 2) 새로운 빈 리스트를 만들고, 각각의 리스트의 작은 수들을 append()
-# 3) 새로운 리스트의 가장 큰 수를 인덱스로 구하기
-
+# 2) 사용자가 행(n) 선택 ! =input 
+# 3) 가장 큰 수 구하기 = index 활용 !!
 
 
 # 2. 예시로 파악하기
+n = int(input("행의 수: "))
+m = int(input("열의 수: "))
+
 list_n =[[3,1,2],[4,1,4],[2,2,2]]
-for a in list_n:
+for a in range(0,n):
     a.sort()
 print(list_n)
     # 결과 :[[1, 2, 3],[1, 4, 4],[2, 2, 2]]
 
-list_n2 = []
-for a in range(len(list_n)):
-    b = list_n[a][0]
-    list_n2.append(b)
-print(list_n2[-1]) 
-    # 결과 : 2
 
+# 사용자가 행(n)을 선택 = > list[n+1]
+choose_n = int(input("몇 번째 행을 선택하시겠습니까?: "))
+for b in range(0,m):
+    b.sort()
 
+# 가장 큰 수 선택하기 = 인덱스 활용
+answer = list_n[n-1][-1]
+print(answer)
+#     # 결과 : 2
+
+다시 풀어보기~
 # 3. 프로그램 구현
-m = int(input("열의 수를 입력하세요: "))
-n = int(input("행의 수를 입력하세요: "))
+row_num = int('m')
+line_num = int('n')
 
 N_line = [] #n개의 행 리스트
 for a in n:
