@@ -38,7 +38,7 @@
 # listb = []
 
 # lista=[[3,1,2],[4,1,4],[2,2,2]]
-# for a in range(0,3):
+# for a in range(0,m):
 #     lista[a].sort()
 
 # for b in range(len(lista)):
