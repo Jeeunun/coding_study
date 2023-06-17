@@ -1,0 +1,65 @@
+# <만들 수 없는 금액>
+# 만들 수 있는 금액(tot) 을 생각해보자.
+# tot과 비교할 수 있는 값 x 설정
+# coins 정렬 후 차례대로 동전을 추가해가며 만들 수 없는 금액을 찾아보자 !
+
+# 예제
+coins = [3,2,1,1,9]
+coins.sort() #[1,1,2,3,9]
+
+    #1) tot = 1 
+    #
+    #2) 1원을 추가했을 때 
+    #  tot = 2 
+    #  x = 2 + 1 = 3
+    #
+    #3) 2원을 추가했을 때  
+    #  tot = 4
+    #  x=  3 + 2 = 5
+    #   
+    #4) 3원을 추가 했을 때
+    #  tot = 7
+    #  x = 5 + 3 = 8
+    #
+    #5) 9원을 추가 했을 때  
+    # x보다 크다. => 만들 수 없는 최솟값은 8 !
+
+# 프로그램 구현
+coins = list(map(int, input("가지고 있는 화폐 단위를 입력하세요: ")))
+coins.sort() 
+
+x = 1 # 만들 수 없는 금액과의 비교를 위해 만들 수 없는 금액 가상 설정
+tot = 0 # 만들 수 있는 금액의 범위(누적합)
+
+for coin in coins :
+    tot+=coin
+    if coin > x :
+        break
+    x += coin
+print(x)
+    # coins = [1,1,2,3,9] 일 때 
+    # coin 1 -> x = 1, tot = 1 -> x = 2 #=최솟값 1을 만들 수 있다. 
+    # coin 1 -> tot = 2, x = 2 -> x = 3 #=최솟값 2을 만들 수 있다.
+    # coin 2 -> tot = 4, x = 3 -> x = 5 #=최솟값 3을 만들 수 있다.
+    # coin 3 -> tot = 7, x = 5 -> x = 8 #=최솟값 5를 만들 수 있다.
+    # coin 9 -> tot =16, x = 8 -> break #=최솟값 8 !
+
+# 함수
+def solution(coins):   
+    coins.sort() 
+    x = 1
+    tot = 0
+    for coin in coins :
+        tot+=coin
+        if coin > x :
+            break
+        x += coin
+    return x
+
+coins = list(map(int, input("가지고 있는 화폐 단위를 입력하세요: ").split(' ')))
+result = solution(coins)
+print(result)
+
+# <볼링공 고르기>
+
+# <무지의 먹방 라이브>
