@@ -63,56 +63,77 @@
 # => 두번째, 세번째 인덱스는 0~59범위 
 # 3) 3이 들어있으면 count
 
-# <예제>
-N = 5
-count = 0 #시작점
-for i in range(0,N+1): # i = 첫번째 인덱스 범위값
-    for j in range(0,60): # j = 두번째 인덱스 범위값
-        for z in range(0,60): # z = 세번째 인덱스 범위값
-            if '3' in str(i) + str(j) +str(z): # time 리스트(모든 인덱스값) 에서 '3'이 포함된 경우 
-                count +=1 
+# # <예제>
+# N = 5
+# count = 0 #시작점
+# for i in range(0,N+1): # i = 첫번째 인덱스 범위값
+#     for j in range(0,60): # j = 두번째 인덱스 범위값
+#         for z in range(0,60): # z = 세번째 인덱스 범위값
+#             if '3' in str(i) + str(j) +str(z): # time 리스트(모든 인덱스값) 에서 '3'이 포함된 경우 
+#                 count +=1 
 
-print(count)
-            # 처음 시도 : 왜 안될까?
-            # if '3' in str(i):
-            #     count += 1
-            # if '3' in str(j):
-            #     count += 1
-            # if '3' in str(z):
-            #     count += 1
+# print(count)
+#             # 처음 시도 : 왜 안될까?
+#             # if '3' in str(i):
+#             #     count += 1
+#             # if '3' in str(j):
+#             #     count += 1
+#             # if '3' in str(z):
+#             #     count += 1
 
-            # if '3' in str(i) or str(j) or str(z):
-            #   count += 1
+#             # if '3' in str(i) or str(j) or str(z):
+#             #   count += 1
 
-# <프로그램구현>
-def solution(N):
-    N = input("정수를 입력하세요: ")
+# # <프로그램구현>
+# def solution(N):
+#     N = input("정수를 입력하세요: ")
+#     count = 0
+#     for i in range(0,N+1): 
+#         for j in range(0,60):
+#             for z in range(0,60): 
+#                 if '3' in str(i) + str(j) +str(z): 
+#                     count +=1 
+#     return count
+
+# # --------------
+# # p115 실전문제 <왕실의 나이트>
+# # <아이디어>
+# # N X N => 1~N까지의 정사각형 범위
+# # now(현재위치) = input
+# # = 4-1예제 <상하좌우>와 같은 문제라 생각함.
+
+# # <예제>
+# N = 8 # 8X8
+# now = [2,3]
+
+# direction = [(-1,-2),(-1,2),(1,2),(1,-2),(2,-1),(2,1),(-2,1),(-2,-1)]
+# # 수평으로(y) 두칸(오른쪽+2, 왼쪽-2) 이동 + 수직으로(x) 한칸 (위-1. 아래+1) 이동 
+# # 수직으로(x) 두칸(위-2. 아래+2) 이동 + 수평으로(y) 한칸(오른쪽+1, 왼쪽-1) 이동
+# # 그러나, 현재 위치가(2,3)이므로 (-2,1),(-2,-1)일 경우 N의 범위에서 벗어남.
+# # 따라서 현재위치(2,3)에서 갈 수 있는 방향의 개수는 [(-1,-2),(-1,2),(1,2),(1,-2),(2,-1),(2,1)] 총 6가지
+# print(ord('a')) #97
+# print(ord('c')) #99
+
+# # # <프로그램 구현>
+N = input("N의 정수값을 입력하세요: ") 
+now = input("현재 위치를 입력하세요: ") #a1 = (1,1)
+x = int(now[1]) 
+y = int(ord(now[0])) - int(ord('a'))+1
+
+direction = [(-1,-2),(-1,2),(1,2),(1,-2),(2,-1),(2,1),(-2,1),(-2,-1)]
+
+ #시작점 설정
+def solution(N,now):
     count = 0
-    for i in range(0,N+1): 
-        for j in range(0,60):
-            for z in range(0,60): 
-                if '3' in str(i) + str(j) +str(z): 
-                    count +=1 
+    for d in direction:
+        x = x + d[0]
+        y = y + d[1]
+        if 0<x<N+1 and 0<y<N+1:
+            count+=1
     return count
 
-# --------------
-# p115 실전문제 <왕실의 나이트>
-# <아이디어>
-# N X N => 1~N까지의 정사각형 범위
-# now(현재위치) = input
-# = 4-1예제 <상하좌우>와 같은 문제라 생각함.
-
-# <예제>
-N = 8 # 8X8
-now = [2,3]
-count = 0
-direction = [(-1,-2),(1,-2),(-1,2),(1,2),(2,-1),(2,1)]
-
-
-
-# <프로그램 구현>
-
-
+result = solution(8,a1)
+print(result)
 # ---------------
 # p118 실전문제 <게임개발>
 # <아이디어>
